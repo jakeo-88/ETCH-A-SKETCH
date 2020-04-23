@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Page Title</title>
+  <title>ETCH-A-SKETCH</title>
   <meta charset="UTF-8"/>
   <style>
     .container {
@@ -10,6 +10,9 @@
     display: grid;
     grid-template-columns: 100px 100px 100px 100px;
     grid-template-rows: 100px 100px 100px 100px;
+    column-gap: 5px;
+    row-gap: 5px;
+    place-content: center;  
     }
   </style>
 </head>
@@ -18,6 +21,7 @@
     var body = document.getElementsByTagName("BODY")[0];
     var container = document.createElement('DIV');
     container.classList.add('container');
+    container.style.backgroundColor = 'black';
     body.appendChild(container);
     var d1 = document.createElement('DIV');
     var d2 = document.createElement('DIV');
@@ -35,6 +39,22 @@
     var d14 = document.createElement('DIV');
     var d15 = document.createElement('DIV');
     var d16 = document.createElement('DIV');
+    d1.classList.add('square');
+    d2.classList.add('square');
+    d3.classList.add('square');
+    d4.classList.add('square');
+    d5.classList.add('square');
+    d6.classList.add('square');
+    d7.classList.add('square');
+    d8.classList.add('square');
+    d9.classList.add('square');
+    d10.classList.add('square');
+    d11.classList.add('square');
+    d12.classList.add('square');
+    d13.classList.add('square');
+    d14.classList.add('square');
+    d15.classList.add('square');
+    d16.classList.add('square');
     d1.style.backgroundColor = 'lightblue';
     d2.style.backgroundColor = 'lightblue';
     d3.style.backgroundColor = 'lightblue';
@@ -51,38 +71,6 @@
     d14.style.backgroundColor = 'lightblue';
     d15.style.backgroundColor = 'lightblue';
     d16.style.backgroundColor = 'lightblue';
-    d1.textContent = "1";
-    d2.textContent = "2";
-    d3.textContent = "3";
-    d4.textContent = "4";
-    d5.textContent = "5";
-    d6.textContent = "6";
-    d7.textContent = "7";
-    d8.textContent = "8";
-    d9.textContent = "9";
-    d10.textContent = "10";
-    d11.textContent = "11";
-    d12.textContent = "12";
-    d13.textContent = "13";
-    d14.textContent = "14";
-    d15.textContent = "15";
-    d16.textContent = "16";
-    d1.classList.add('d1');
-    d2.classList.add('d2');
-    d3.classList.add('d3');
-    d4.classList.add('d4');
-    d5.classList.add('d5');
-    d6.classList.add('d6');
-    d7.classList.add('d7');
-    d8.classList.add('d8');
-    d9.classList.add('d9');
-    d10.classList.add('d10');
-    d11.classList.add('d11');
-    d12.classList.add('d12');
-    d13.classList.add('d13');
-    d14.classList.add('d14');
-    d15.classList.add('d15');
-    d16.classList.add('d16');
     container.appendChild(d1);
     container.appendChild(d2);
     container.appendChild(d3);
@@ -99,6 +87,55 @@
     container.appendChild(d14);
     container.appendChild(d15);
     container.appendChild(d16);
+    var grid = document.querySelectorAll('div.square');
+    grid[0].addEventListener('mouseover', (e) => {
+        grid[0].style.backgroundColor = "gold";
+      });
+    grid[1].addEventListener('mouseover', (e) => {
+        grid[1].style.backgroundColor = "gold";
+      });
+    grid[2].addEventListener('mouseover', (e) => {
+        grid[2].style.backgroundColor = "gold";
+      });
+    grid[3].addEventListener('mouseover', (e) => {
+        grid[3].style.backgroundColor = "gold";
+      });
+    grid[4].addEventListener('mouseover', (e) => {
+        grid[4].style.backgroundColor = "gold";
+      });
+    grid[5].addEventListener('mouseover', (e) => {
+        grid[5].style.backgroundColor = "gold";
+      });
+    grid[6].addEventListener('mouseover', (e) => {
+        grid[6].style.backgroundColor = "gold";
+      });
+    grid[7].addEventListener('mouseover', (e) => {
+        grid[7].style.backgroundColor = "gold";
+      });
+    grid[8].addEventListener('mouseover', (e) => {
+        grid[8].style.backgroundColor = "gold";
+      });
+    grid[9].addEventListener('mouseover', (e) => {
+        grid[9].style.backgroundColor = "gold";
+      });
+    grid[10].addEventListener('mouseover', (e) => {
+        grid[10].style.backgroundColor = "gold";
+      });
+    grid[11].addEventListener('mouseover', (e) => {
+        grid[11].style.backgroundColor = "gold";
+      });
+    grid[12].addEventListener('mouseover', (e) => {
+        grid[12].style.backgroundColor = "gold";
+      });
+    grid[13].addEventListener('mouseover', (e) => {
+        grid[13].style.backgroundColor = "gold";
+      });
+    grid[14].addEventListener('mouseover', (e) => {
+        grid[14].style.backgroundColor = "gold";
+      });
+    grid[15].addEventListener('mouseover', (e) => {
+        grid[15].style.backgroundColor = "gold";
+      });
   </script>
 </body>
 </html>
