@@ -21,7 +21,10 @@
     var body = document.getElementsByTagName("BODY")[0];
     var container = document.createElement('DIV');
     container.classList.add('container');
+    var button = document.createElement('BUTTON');
     container.style.backgroundColor = 'black';
+    button.textContent = 'Reset';
+    body.appendChild(button);
     body.appendChild(container);
     var d1 = document.createElement('DIV');
     var d2 = document.createElement('DIV');
@@ -136,6 +139,15 @@
     grid[15].addEventListener('mouseover', (e) => {
         grid[15].style.backgroundColor = "gold";
       });
+    function revertColor() {
+      var i;
+      for(i = 0; i < grid.length; i++) {
+        grid[i].style.backgroundColor = "lightblue";
+      }
+    }
+    button.addEventListener('click', function (e) {
+      revertColor(e.target);
+    });
   </script>
 </body>
 </html>
