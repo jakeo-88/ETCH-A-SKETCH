@@ -8,145 +8,67 @@
     font-size: 40px;
     width: 100%;
     display: grid;
-    grid-template-columns: 100px 100px 100px 100px;
-    grid-template-rows: 100px 100px 100px 100px;
-    column-gap: 5px;
-    row-gap: 5px;
+    column-gap: 1px;
+    row-gap: 1px;
     place-content: center;  
     }
   </style>
 </head>
 <body>
   <script>
-    var body = document.getElementsByTagName("BODY")[0];
+    var body = document.getElementsByTagName('BODY')[0];
     var container = document.createElement('DIV');
-    container.classList.add('container');
     var button = document.createElement('BUTTON');
-    container.style.backgroundColor = 'black';
+    container.classList.add('container');
+    container.setAttribute('id', 'theGrid'); 
     button.textContent = 'Reset';
     body.appendChild(button);
     body.appendChild(container);
-    var d1 = document.createElement('DIV');
-    var d2 = document.createElement('DIV');
-    var d3 = document.createElement('DIV');
-    var d4 = document.createElement('DIV');
-    var d5 = document.createElement('DIV');
-    var d6 = document.createElement('DIV');
-    var d7 = document.createElement('DIV');
-    var d8 = document.createElement('DIV');
-    var d9 = document.createElement('DIV');
-    var d10 = document.createElement('DIV');
-    var d11 = document.createElement('DIV');
-    var d12 = document.createElement('DIV');
-    var d13 = document.createElement('DIV');
-    var d14 = document.createElement('DIV');
-    var d15 = document.createElement('DIV');
-    var d16 = document.createElement('DIV');
-    d1.classList.add('square');
-    d2.classList.add('square');
-    d3.classList.add('square');
-    d4.classList.add('square');
-    d5.classList.add('square');
-    d6.classList.add('square');
-    d7.classList.add('square');
-    d8.classList.add('square');
-    d9.classList.add('square');
-    d10.classList.add('square');
-    d11.classList.add('square');
-    d12.classList.add('square');
-    d13.classList.add('square');
-    d14.classList.add('square');
-    d15.classList.add('square');
-    d16.classList.add('square');
-    d1.style.backgroundColor = 'lightblue';
-    d2.style.backgroundColor = 'lightblue';
-    d3.style.backgroundColor = 'lightblue';
-    d4.style.backgroundColor = 'lightblue';
-    d5.style.backgroundColor = 'lightblue';
-    d6.style.backgroundColor = 'lightblue';
-    d7.style.backgroundColor = 'lightblue';
-    d8.style.backgroundColor = 'lightblue';
-    d9.style.backgroundColor = 'lightblue';
-    d10.style.backgroundColor = 'lightblue';
-    d11.style.backgroundColor = 'lightblue';
-    d12.style.backgroundColor = 'lightblue';
-    d13.style.backgroundColor = 'lightblue';
-    d14.style.backgroundColor = 'lightblue';
-    d15.style.backgroundColor = 'lightblue';
-    d16.style.backgroundColor = 'lightblue';
-    container.appendChild(d1);
-    container.appendChild(d2);
-    container.appendChild(d3);
-    container.appendChild(d4);
-    container.appendChild(d5);
-    container.appendChild(d6);
-    container.appendChild(d7);
-    container.appendChild(d8);
-    container.appendChild(d9);
-    container.appendChild(d10);
-    container.appendChild(d11);
-    container.appendChild(d12);
-    container.appendChild(d13);
-    container.appendChild(d14);
-    container.appendChild(d15);
-    container.appendChild(d16);
-    var grid = document.querySelectorAll('div.square');
-    grid[0].addEventListener('mouseover', (e) => {
-        grid[0].style.backgroundColor = "gold";
-      });
-    grid[1].addEventListener('mouseover', (e) => {
-        grid[1].style.backgroundColor = "gold";
-      });
-    grid[2].addEventListener('mouseover', (e) => {
-        grid[2].style.backgroundColor = "gold";
-      });
-    grid[3].addEventListener('mouseover', (e) => {
-        grid[3].style.backgroundColor = "gold";
-      });
-    grid[4].addEventListener('mouseover', (e) => {
-        grid[4].style.backgroundColor = "gold";
-      });
-    grid[5].addEventListener('mouseover', (e) => {
-        grid[5].style.backgroundColor = "gold";
-      });
-    grid[6].addEventListener('mouseover', (e) => {
-        grid[6].style.backgroundColor = "gold";
-      });
-    grid[7].addEventListener('mouseover', (e) => {
-        grid[7].style.backgroundColor = "gold";
-      });
-    grid[8].addEventListener('mouseover', (e) => {
-        grid[8].style.backgroundColor = "gold";
-      });
-    grid[9].addEventListener('mouseover', (e) => {
-        grid[9].style.backgroundColor = "gold";
-      });
-    grid[10].addEventListener('mouseover', (e) => {
-        grid[10].style.backgroundColor = "gold";
-      });
-    grid[11].addEventListener('mouseover', (e) => {
-        grid[11].style.backgroundColor = "gold";
-      });
-    grid[12].addEventListener('mouseover', (e) => {
-        grid[12].style.backgroundColor = "gold";
-      });
-    grid[13].addEventListener('mouseover', (e) => {
-        grid[13].style.backgroundColor = "gold";
-      });
-    grid[14].addEventListener('mouseover', (e) => {
-        grid[14].style.backgroundColor = "gold";
-      });
-    grid[15].addEventListener('mouseover', (e) => {
-        grid[15].style.backgroundColor = "gold";
-      });
+
+    var defaultSquares = 16;
+    var gridSideLength = Math.sqrt(defaultSquares);
+    var gridPixelSize = (20*15)/gridSideLength;
+
+    container.style.gridTemplateColumns= 'repeat(' + gridSideLength + ', ' +gridPixelSize+ 'px)';
+    container.style.gridTemplateRows= 'repeat(' + gridSideLength + ', ' +gridPixelSize+ 'px)';
+
+    button.addEventListener('click', (e) => {
+      revertColor();
+      //sizeGrid(); 
+    });
+
+    function sizeGrid() {
+      newGridSize = parseInt(prompt('How many squares per side to make the new grid?'));
+      gridSideLength = Math.sqrt(newGridSize);
+      gridPixelSize = (20*15)/gridSideLength;
+      container.style.gridTemplateColumns= 'repeat(' + gridSideLength + ', ' +gridPixelSize+ 'px)';
+      container.style.gridTemplateRows= 'repeat(' + gridSideLength + ', ' +gridPixelSize+ 'px)';
+    }
+
     function revertColor() {
-      var i;
-      for(i = 0; i < grid.length; i++) {
-        grid[i].style.backgroundColor = "lightblue";
+      var j; 
+      for(j = 0; j < gridColor.length; j++) {
+        gridColor[j].style.backgroundColor = 'blue';
       }
     }
-    button.addEventListener('click', function (e) {
-      revertColor(e.target);
+
+    var newGridSize;
+    var gridSquares = newGridSize || defaultSquares;
+    var grid = document.createDocumentFragment();
+    for(var i = 0; i < gridSquares; i++) {
+      var newDiv = document.createElement('div');
+      newDiv.id = 'd' + i;
+      newDiv.className = 'square';
+      newDiv.style.backgroundColor = 'blue';
+      grid.appendChild(newDiv);
+    }
+    container.appendChild(grid);
+
+    var gridColor = document.querySelectorAll('div.square');
+    gridColor.forEach((newDiv) => {
+      newDiv.addEventListener('mouseover', (e) => {
+        newDiv.style.backgroundColor = 'red';
+      });
     });
   </script>
 </body>
