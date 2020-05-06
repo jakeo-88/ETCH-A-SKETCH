@@ -26,49 +26,76 @@
     body.appendChild(container);
 
     var defaultSquares = 16;
-    var gridSideLength = Math.sqrt(defaultSquares);
-    var gridPixelSize = (20*15)/gridSideLength;
-
-    container.style.gridTemplateColumns= 'repeat(' + gridSideLength + ', ' +gridPixelSize+ 'px)';
-    container.style.gridTemplateRows= 'repeat(' + gridSideLength + ', ' +gridPixelSize+ 'px)';
-
-    button.addEventListener('click', (e) => {
-      revertColor();
-      //sizeGrid(); 
-    });
 
     function sizeGrid() {
+      
       newGridSize = parseInt(prompt('How many squares per side to make the new grid?'));
-      gridSideLength = Math.sqrt(newGridSize);
+      gridSideLength = Math.ceil(Math.sqrt(newGridSize || defaultSquares));
       gridPixelSize = (20*15)/gridSideLength;
+
       container.style.gridTemplateColumns= 'repeat(' + gridSideLength + ', ' +gridPixelSize+ 'px)';
       container.style.gridTemplateRows= 'repeat(' + gridSideLength + ', ' +gridPixelSize+ 'px)';
-    }
 
-    function revertColor() {
-      var j; 
-      for(j = 0; j < gridColor.length; j++) {
-        gridColor[j].style.backgroundColor = 'blue';
+      gridSquares = newGridSize;
+      var grid = document.createDocumentFragment();
+      for(var i = 0; i < gridSquares; i++) {
+        var newDiv = document.createElement('div');
+        newDiv.id = 'd' + i;
+        newDiv.className = 'square';
+        newDiv.style.backgroundColor = 'blue';
+        grid.appendChild(newDiv);
       }
+      container.appendChild(grid);
+      
+      var gridColor = document.querySelectorAll('div.square');
+      gridColor.forEach((newDiv) => {
+        newDiv.addEventListener('mouseover', (e) => {
+          newDiv.style.backgroundColor = 'red';
+        });
+      });
+      
+      revertColor();
+      
+      function revertColor() {
+        var j; 
+        for(j = 0; j < gridColor.length; j++) {
+          gridColor[j].style.backgroundColor = 'blue';
+        }
+      }console.log(gridSquares);
     }
 
     var newGridSize;
     var gridSquares = newGridSize || defaultSquares;
-    var grid = document.createDocumentFragment();
-    for(var i = 0; i < gridSquares; i++) {
-      var newDiv = document.createElement('div');
-      newDiv.id = 'd' + i;
-      newDiv.className = 'square';
-      newDiv.style.backgroundColor = 'blue';
-      grid.appendChild(newDiv);
-    }
-    container.appendChild(grid);
+    if(Boolean(defaultSquares) == true) {
+      
+      var gridSideLength = Math.ceil(Math.sqrt(newGridSize || defaultSquares));
+      var gridPixelSize = (20*15)/gridSideLength;
 
-    var gridColor = document.querySelectorAll('div.square');
+      container.style.gridTemplateColumns= 'repeat(' + gridSideLength + ', ' +gridPixelSize+ 'px)';
+      container.style.gridTemplateRows= 'repeat(' + gridSideLength + ', ' +gridPixelSize+ 'px)';
+
+      var grid = document.createDocumentFragment();
+      for(var k = 0; k < gridSquares; k++) {
+        var newDiv = document.createElement('div');
+        newDiv.id = 'd' + k;
+        newDiv.className = 'square';
+        newDiv.style.backgroundColor = 'blue';
+        grid.appendChild(newDiv);
+      }
+      container.appendChild(grid);
+      var gridColor = document.querySelectorAll('div.square');
     gridColor.forEach((newDiv) => {
       newDiv.addEventListener('mouseover', (e) => {
         newDiv.style.backgroundColor = 'red';
       });
+    });
+
+    }else {
+
+    }
+
+    button.addEventListener('click', (e) => {
+      sizeGrid(); 
     });
   </script>
 </body>
